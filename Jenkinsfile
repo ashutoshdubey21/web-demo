@@ -11,7 +11,7 @@ pipeline {
                   steps {
                         echo 'initializing the git repo. in httpd web server'
                         sh '''
-                              sudo cd /var/www/html
+                              cd /var/www/html
                               sudo git init
                         '''
                   }
@@ -20,7 +20,7 @@ pipeline {
                   steps {
                         echo "Deploying the test website"
                         sh '''
-                              sudo cd /var/www/html
+                              cd /var/www/html
                               sudo git pull git pull https://github.com/ashutoshdubey21/web-demo.git
                         '''
                   }
