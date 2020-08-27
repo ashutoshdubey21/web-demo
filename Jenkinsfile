@@ -17,6 +17,7 @@ pipeline {
             stage('Deploy') {
                   steps {
                         echo "Deploying the test website"
+                        sh 'cd /var/www/html'
                         sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
                   }
             }
