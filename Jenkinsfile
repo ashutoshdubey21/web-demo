@@ -9,15 +9,13 @@ pipeline {
             }
             stage('Build') {
                   steps {
-                        echo 'initializing the git repo. in jenkins workspace'
-                        sh 'git init'
-                        sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
+                        echo 'initializing the git repo. in httpd web server'
+                        sh 'cd /var/www/html; git init; git pull https://github.com/ashutoshdubey21/web-demo.git'
                   }
             }
             stage('Deploy') {
                   steps {
                         echo "Deploying the test website"
-                        sh 'sudo -S cp -r . /var/www/html'
 
                   }
             }
