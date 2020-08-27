@@ -3,24 +3,23 @@ pipeline {
       stages {
             stage('Init') {
                   steps {
-                        echo 'Hi, this is Anshul from LevelUp360'
+                        echo 'Hi, this is Ashutosh from giit'
                         echo 'We are Starting the Testing'
                   }
             }
             stage('Build') {
                   steps {
-                        echo 'Building Sample Maven Project'
+                        echo 'initializing the git repo. in httpd web directory'
+                        sh 'cd /var/www/html'
+                        sh 'git init'
                   }
             }
             stage('Deploy') {
                   steps {
-                        echo "Deploying in Staging Area"
+                        echo "Deploying the test website"
+                        sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
                   }
             }
-            stage('Deploy Production') {
-                  steps {
-                        echo "Deploying in Production Area"
-                  }
-            }
+            
       }
 }
