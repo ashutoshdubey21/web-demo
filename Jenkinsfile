@@ -11,9 +11,10 @@ pipeline {
                   steps {
                         echo 'initializing the git repo. in httpd web server'
                         sshagent(['c69260a1-8232-44a5-99df-6209a37018c1']) {
-                              sh 'cd /var/www/html/'
-                              sh 'git init'
-                              sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
+                              sh 'whoami'
+                              //sh 'cd /var/www/html/'
+                              //sh 'git init'
+                              //sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
                         }
                         
                   }
