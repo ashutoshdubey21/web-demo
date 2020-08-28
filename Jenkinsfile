@@ -10,18 +10,15 @@ pipeline {
             stage('Build') {
                   steps {
                         echo 'initializing the git repo. in httpd web server'
-                        dir('/var/www/html/') {
-                              git init
-                        }
+                        sh label: 'demo', script: '''cd /var/www/html/
+                        git init
+                        git pull https://github.com/ashutoshdubey21/web-demo.git'''
                         
                   }
             }
             stage('Deploy') {
                   steps {
-                        echo "Deploying the test website"
-                        dir('/var/www/html/') {
-                              git pull https://github.com/ashutoshdubey21/web-demo.git
-                        }
+                        echo "Deploying the test website
                         
                   }
             }
