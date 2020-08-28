@@ -12,7 +12,7 @@ pipeline {
                         echo 'initializing the git repo. in httpd web server'
                         sh '''
                               cd /var/www/html
-                              sudo git init
+                              git init
                         '''
                   }
             }
@@ -21,7 +21,7 @@ pipeline {
                         echo "Deploying the test website"
                         sh '''
                               cd /var/www/html
-                              sudo git pull git pull https://github.com/ashutoshdubey21/web-demo.git
+                              git pull git pull https://github.com/ashutoshdubey21/web-demo.git
                         '''
                   }
             }
