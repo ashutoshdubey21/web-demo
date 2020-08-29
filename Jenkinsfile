@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
-                sh 'git init'
-                sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
+                echo "Initiating a web server"
+                sh 'sudo yum install httpd -y'
+                sh 'sudo systemctl start httpd'
             }
             post {
                 success {
                     echo "Now Archiving the Artifacts...."
-                    archiveArtifacts artifacts: '**/*'
                 }
             }
         }
-    
+    /*
         stage('Deploy in Staging Environment'){
             steps{
                 build job: 'Deploy_Application_Staging_Env'
