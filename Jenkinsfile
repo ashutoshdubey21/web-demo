@@ -1,30 +1,33 @@
 pipeline {
-      agent any
-      stages {
-            stage('Init') {
-                  steps {
-                        echo 'Hi, this is Ashutosh from giit'
-                        echo 'We are Starting the Testing'
-                  }
+    agent any
+    stages {
+        stage('Build Application') {
+            steps {
+                sh 'git init'
             }
-            stage('Build') {
-                  steps {
-                        echo 'initializing the git repo. in httpd web server'
-                        sshagent(['c69260a1-8232-44a5-99df-6209a37018c1']) {
-                              sh 'whoami'
-                              //sh 'cd /var/www/html/'
-                              //sh 'git init'
-                              //sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
-                        }
-                        
-                  }
+            post {
+                success {
+                    echo "Now Archiving the Artifacts...."
+                    archiveArtifacts artifacts: '**/*'
+                }
             }
-            stage('Deploy') {
-                  steps {
-                        echo 'successful deployed'
-                        
-                  }
+        }
+        stage('Deploy in Staging Environment'){
+            steps{
+                build job: 'Deploy_Application_Staging_Env'
+ 
             }
             
-      }
+        }
+    /*
+        stage('Deploy to Production'){
+            steps{
+                timeout(time:5, unit:'DAYS'){
+                    input message:'Approve PRODUCTION Deployment?'
+                }
+                build job: 'Deploy_Application_Prod_Env'
+            }
+        }
+  */
+    }
 }
