@@ -4,6 +4,7 @@ pipeline {
         stage('Build Application') {
             steps {
                 sh 'git init'
+                sh 'git pull https://github.com/ashutoshdubey21/web-demo.git'
             }
             post {
                 success {
@@ -12,6 +13,7 @@ pipeline {
                 }
             }
         }
+     /*
         stage('Deploy in Staging Environment'){
             steps{
                 build job: 'Deploy_Application_Staging_Env'
@@ -19,6 +21,7 @@ pipeline {
             }
             
         }
+     */   
     /*
         stage('Deploy to Production'){
             steps{
